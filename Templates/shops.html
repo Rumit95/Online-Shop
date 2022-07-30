@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello</title>
+  </head>
+  <body>
+    <center><h1>Shop {{shname}}</h1>
+
+      
+
+    <table class="table" style="width:30%" border="2px solid">
+
+    <br><br>
+    <tr>
+      <td>item id</td>
+      <td>item name</td>
+      <td>price</td>
+      <td>quantity available</td>
+      <td>new quantity</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{i[0]}}</td>
+      <td>{{i[1]}}</td>
+      <td>{{i[2]}}</td>
+      <td>{{i[3]}}</td>
+      <td> <form action="/updatelink/{{i[1]}}/{{shname}}" method="post">  
+        <input type="text" name="buy" >
+        <button type="submit">update</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <form action="/addlink/{{shname}}" method="post"> 
+      <label for="add_item"><b> item name </b></label> 
+      <input type="text" name="add_item" >
+      <label for="add_price"><b> item price </b></label> 
+      <input type="text" name="add_price" >
+      <label for="add_quantity"><b> item quantity </b></label>
+      <input type="text" name="add_quantity" > 
+      <button type="submit">add</button>
+      </form>
+    </tr>
+    </table>
+    <br><br>
+
+    <a href="/logoutlinks" >
+      <div class="container">
+        <button type="submit">Log out</button><br>
+      </div>
+    </a>
+    </center>
+  </body>
+</html>
